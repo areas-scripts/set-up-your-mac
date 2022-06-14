@@ -104,24 +104,13 @@ wget https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
 open ~/Downloads
 
 # =============
-# Install Fonts
-# =============
-echo "Installing fonts..."
-brew tap homebrew/cask-fonts
-brew install --cask \
-  font-sf-arabic \
-  font-sf-compact \
-  font-sf-mono \
-  font-new-york \
-  font-sf-pro \
-
-# =============
 # Configure git
 # =============
 echo "Configuring git..."
 git config --global init.defaultBranch main
 git config --global user.name "Christian Areas"
 git config --global user.email me@areas.me
+git config -l
 
 # ===========
 # Install NVM
@@ -140,3 +129,15 @@ echo '' >> ~/.zshrc
 # Install Gatsby
 # ==============
 npm install -g gatsby-cli
+
+# =============
+# Install Fonts
+# =============
+echo "Installing fonts..."
+brew tap homebrew/cask-fonts
+brew install --cask \
+  font-sf-arabic \
+  font-sf-compact \
+  font-sf-mono \
+  font-new-york \
+  font-sf-pro \

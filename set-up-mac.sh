@@ -111,7 +111,6 @@ git config -l
 # Configure GitHub and GitHub CLI # find a better way to add or edit ~/.ssh/config
 # ===============================
 echo "Configuring GitHub..."
-brew install gh
 ssh-keygen -t ed25519 -C "$(whoami)@$(hostname -s)"
 eval "$(ssh-agent -s)"
 echo 'Host *' > ~/.ssh/config
@@ -119,6 +118,7 @@ echo '  AddKeysToAgent yes' >> ~/.ssh/config
 echo '  UseKeychain yes' >> ~/.ssh/config
 echo '  IdentityFile ~/.ssh/id_ed25519' >> ~/.ssh/config
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+brew install gh
 gh ssh-key add ~/.ssh/id_ed25519.pub
 
 # ===========

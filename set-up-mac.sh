@@ -89,14 +89,14 @@ brew install --cask \
   zoom
 
 # ===================
-# Download Other Apps # todo: find a programatic way to install these apps
+# Download Other Apps # todo: find a way to install these apps
 # ===================
 echo "Downloading other apps..."
 brew install wget
 cd ~/Downloads
 wget https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
 open ~/Downloads/LogiTuneInstaller.dmg
-cd
+cd ~
 
 # =============
 # Configure git 
@@ -108,7 +108,7 @@ git config --global user.email me@areas.me
 git config -l
 
 # ===============================
-# Configure GitHub and GitHub CLI
+# Configure GitHub and GitHub CLI # find a better way to add or edit ~/.ssh/config
 # ===============================
 echo "Configuring GitHub..."
 brew install gh
@@ -119,11 +119,10 @@ echo '  AddKeysToAgent yes' >> ~/.ssh/config
 echo '  UseKeychain yes' >> ~/.ssh/config
 echo '  IdentityFile ~/.ssh/id_ed25519' >> ~/.ssh/config
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519
-gh auth login
 gh ssh-key add ~/.ssh/id_ed25519.pub
 
 # ===========
-# Install NVM # find a better way to add or edit .zshrc. maybe with a mv?
+# Install NVM # find a better way to add or edit ~/.zshrc
 # ===========
 echo "Installing NVM..."
 brew install nvm

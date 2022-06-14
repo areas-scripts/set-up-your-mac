@@ -115,6 +115,14 @@ brew install --cask \
   font-new-york \
   font-sf-pro \
 
+# =============
+# Configure git
+# =============
+echo "Configuring git..."
+git config --global init.defaultBranch main
+git config --global user.name "Christian Areas"
+git config --global user.email me@areas.me
+
 # ===========
 # Install NVM
 # ===========

@@ -11,6 +11,9 @@ xcode-select --install
 # ================
 echo "Installing Homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew tap homebrew/cask-versions
+brew tap homebrew/cask-drivers
+brew tap homebrew/cask-fonts
 
 # =====================
 # Install App Store CLI
@@ -70,8 +73,6 @@ mas install \
 # Install Apps from Homebrew Cask
 # ===============================
 echo "Installing apps from Homebrew Cask..."
-brew tap homebrew/cask-versions
-brew tap homebrew/cask-drivers
 brew install --cask \
   appcleaner \
   brave-browser \
@@ -87,24 +88,18 @@ brew install --cask \
   visual-studio-code \
   zoom
 
-# ===============================
-# Install Command Line Interfaces
-# ===============================
-echo "Installing command line interfaces from Homebrew..."
-brew install \
-  gh \
-  wget
-
-# ===========================
-# Download Apps Not Installed
-# ===========================
-echo "Downloading apps..."
+# ===================
+# Download Other Apps # todo: find a programatic way to install these apps
+# ===================
+echo "Downloading other apps..."
+brew install wget
 cd ~/Downloads
 wget https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
-open ~/Downloads
+open ~/Downloads/LogiTuneInstaller.dmg
+cd
 
 # =============
-# Configure git
+# Configure git 
 # =============
 echo "Configuring git..."
 git config --global init.defaultBranch main
@@ -112,8 +107,23 @@ git config --global user.name "Christian Areas"
 git config --global user.email me@areas.me
 git config -l
 
+# ===============================
+# Configure GitHub and GitHub CLI
+# ===============================
+echo "Configuring GitHub..."
+brew install gh
+ssh-keygen -t ed25519 -C "$(whoami)@$(hostname -s)"
+eval "$(ssh-agent -s)"
+echo 'Host *' > ~/.ssh/config
+echo '  AddKeysToAgent yes' >> ~/.ssh/config
+echo '  UseKeychain yes' >> ~/.ssh/config
+echo '  IdentityFile ~/.ssh/id_ed25519' >> ~/.ssh/config
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+gh auth login
+gh ssh-key add ~/.ssh/id_ed25519.pub
+
 # ===========
-# Install NVM
+# Install NVM # find a better way to add or edit .zshrc. maybe with a mv?
 # ===========
 echo "Installing NVM..."
 brew install nvm
@@ -134,7 +144,6 @@ npm install -g gatsby-cli
 # Install Fonts
 # =============
 echo "Installing fonts..."
-brew tap homebrew/cask-fonts
 brew install --cask \
   font-sf-arabic \
   font-sf-compact \

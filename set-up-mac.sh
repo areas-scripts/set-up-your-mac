@@ -46,7 +46,7 @@ brew install mas
 # 1176895641  Spark
 # 1153157709  Speedtest
 # 1496833156  Swift Playgrounds
-# 1147396723  WhatsAppm
+# 1147396723  WhatsApp
 # 497799835   Xcode
 echo "Installing apps from the App Store..."
 mas install \
@@ -111,31 +111,23 @@ git config --global user.email me@areas.me
 git config -l
 
 # ===============================
-# Configure GitHub and GitHub CLI # find a better way to add or edit ~/.ssh/config
+# Configure GitHub and GitHub CLI
 # ===============================
 echo "Configuring GitHub..."
 ssh-keygen -t ed25519 -C "$(whoami)@$(hostname -s)"
 eval "$(ssh-agent -s)"
-echo 'Host *' > ~/.ssh/config
-echo '  AddKeysToAgent yes' >> ~/.ssh/config
-echo '  UseKeychain yes' >> ~/.ssh/config
-echo '  IdentityFile ~/.ssh/id_ed25519' >> ~/.ssh/config
+cp files/config ~/.ssh/config
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 brew install gh
 gh ssh-key add ~/.ssh/id_ed25519.pub
 
 # ===========
-# Install NVM # find a better way to add or edit ~/.zshrc
+# Install NVM
 # ===========
 echo "Installing NVM..."
 brew install nvm
 mkdir ~/.nvm
-echo '# nvm' > ~/.zshrc
-echo '' >> ~/.zshrc
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
-echo '[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh" # loads nvm' >> ~/.zshrc
-echo '[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # load nvm base_completion' >> ~/.zshrc
-echo '' >> ~/.zshrc
+cp files/.zshrc ~/.zshrc
 
 # ==============
 # Install Gatsby

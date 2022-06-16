@@ -73,7 +73,7 @@ mas install \
   497799835
 
 # ===============================
-# Install Apps from Homebrew Cask
+# Install Apps from Homebrew Cask # todo: deal with case where apps already installed by other means (i.e. not with brew)
 # ===============================
 echo "Installing apps from Homebrew Cask..."
 brew install --cask \

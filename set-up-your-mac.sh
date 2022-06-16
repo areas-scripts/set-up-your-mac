@@ -85,6 +85,7 @@ brew install --cask \
   google-chrome \
   itsycal \
   karabiner-elements \
+  microsoft-teams \
   qmk-toolbox \
   safari-technology-preview \
   stoplight-studio \

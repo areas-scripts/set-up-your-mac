@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# to make this executable:
+# chmod +x set-up-mac.sh
+
 # ====================================
 # Install Command Line Tools for Xcode
 # ====================================
@@ -43,7 +46,7 @@ brew install mas
 # 1176895641  Spark
 # 1153157709  Speedtest
 # 1496833156  Swift Playgrounds
-# 1147396723  WhatsApp
+# 1147396723  WhatsAppm
 # 497799835   Xcode
 echo "Installing apps from the App Store..."
 mas install \
@@ -144,8 +147,12 @@ npm install -g gatsby-cli
 # =============
 echo "Installing fonts..."
 brew install --cask \
-  font-sf-arabic \
+  font-sf-pro \
   font-sf-compact \
   font-sf-mono \
+  font-sf-arabic \
   font-new-york \
-  font-sf-pro \
+  font-ia-writer-duo \
+  font-ia-writer-duospace \
+  font-ia-writer-mono \
+  font-ia-writer-quattro

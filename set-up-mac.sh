@@ -83,6 +83,7 @@ brew install --cask \
   elgato-control-center \
   firefox \
   google-chrome \
+  itsycal \
   karabiner-elements \
   qmk-toolbox \
   safari-technology-preview \

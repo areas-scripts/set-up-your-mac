@@ -20,7 +20,7 @@ brew tap homebrew/cask-fonts
 
 # =====================
 # Install App Store CLI
-# =====================
+# =====================                                                                                                                                                 
 echo "Installing App Store CLI..."
 brew install mas
 
@@ -96,10 +96,8 @@ brew install --cask \
 # ===================
 echo "Downloading other apps..."
 brew install wget
-cd ~/Downloads
-wget https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
+wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
 open ~/Downloads/LogiTuneInstaller.dmg
-cd -
 
 # =============
 # Configure git 
@@ -148,4 +146,3 @@ brew install --cask \
   font-ia-writer-duospace \
   font-ia-writer-mono \
   font-ia-writer-quattro
-  

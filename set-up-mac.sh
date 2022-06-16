@@ -99,7 +99,7 @@ brew install wget
 cd ~/Downloads
 wget https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
 open ~/Downloads/LogiTuneInstaller.dmg
-cd ~
+cd -
 
 # =============
 # Configure git 
@@ -148,3 +148,4 @@ brew install --cask \
   font-ia-writer-duospace \
   font-ia-writer-mono \
   font-ia-writer-quattro
+  

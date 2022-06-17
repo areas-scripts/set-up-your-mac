@@ -148,3 +148,24 @@ brew install --cask \
   font-ia-writer-duospace \
   font-ia-writer-mono \
   font-ia-writer-quattro
+
+# ===============
+# Configure macOS
+# ===============
+echo "Configuring macOS..."
+
+# Dock
+defaults write com.apple.dock "autohide" -bool "true"
+defaults write com.apple.dock "tilesize" -int "64"
+defaults write com.apple.dock "largesize" -int "128"
+defaults write com.apple.dock "autohide-delay" -float "0.25"
+defaults write com.apple.dock "autohide-time-modifier" -float "0.25"
+defaults write com.apple.dock "mineffect" -string "scale"
+
+# Restart Dock and Finder
+killall Dock Finder
+
+# =====
+# Done!
+# =====
+echo "Fin"

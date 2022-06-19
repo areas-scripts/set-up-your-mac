@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# to make this executable:
+# reminder, to make this script executable:
 # chmod +x set-up-mac.sh
 
 # ===============
@@ -22,7 +22,7 @@ prompt_and_run () {
         $2
         break
         ;;
-      "n" | "no" | "skip")
+      "n" | "no" | "s" | "skip")
         shopt -u nocasematch
         break
         ;;
@@ -40,6 +40,7 @@ commands () {
   echo "Installing Command Line Tools for Xcode..."
   xcode-select --install
 }
+
 prompt_and_run \
   "Do you want to install Command Line Tools for Xcode?" \
   commands
@@ -54,6 +55,7 @@ commands () {
   brew tap homebrew/cask-drivers
   brew tap homebrew/cask-fonts
 }
+
 prompt_and_run \
   "Do you want to install Homebrew?" \
   commands
@@ -65,6 +67,7 @@ commands () {
   echo "Installing the App Store CLI..."
   brew install mas
 }
+
 prompt_and_run \
   "Do you want to install the App Store CLI?" \
   commands
@@ -74,6 +77,7 @@ prompt_and_run \
 # ======================
 # 640199958   Apple Developer
 # 937984704   Amphetamine
+# 608834326   Calendars
 # 1055511498  Day One
 # 1482920575  DuckDuckGo Privacy Essentials
 # 424389933   Final Cut Pro
@@ -98,6 +102,7 @@ commands () {
   mas install \
     640199958 \
     937984704 \
+    608834326 \
     409183694 \
     409203825 \
     409201541 \
@@ -118,6 +123,7 @@ commands () {
     1147396723 \
     497799835
 }
+
 prompt_and_run \
   "Do you want to install App Store apps?" \
   commands
@@ -144,6 +150,7 @@ commands () {
     visual-studio-code \
     zoom
 }
+
 prompt_and_run \
   "Do you want to install Homebrew Cask apps?" \
   commands
@@ -157,6 +164,7 @@ commands () {
   wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
   open ~/Downloads/LogiTuneInstaller.dmg
 }
+
 prompt_and_run \
   "Do you want to download other apps?" \
   commands
@@ -177,6 +185,7 @@ commands () {
     font-ia-writer-mono \
     font-ia-writer-quattro
 }
+
 prompt_and_run \
   "Do you want to install fonts?" \
   commands
@@ -186,11 +195,14 @@ prompt_and_run \
 # =============
 commands () {
   echo "Configuring git..."
+  # configure the default branch name
   git config --global init.defaultBranch main
   git config --global user.name "Christian Areas"
   git config --global user.email me@areas.me
+  # list git configurations
   git config -l
 }
+
 prompt_and_run \
   "Do you want to configure git?" \
   commands
@@ -202,6 +214,7 @@ commands () {
   echo "Installing GitHub CLI..."
   brew install gh
 }
+
 prompt_and_run \
   "Do you want to install GitHub CLI" \
   commands
@@ -211,12 +224,18 @@ prompt_and_run \
 # ================
 commands () {
   echo "Configuring GitHub..."
+  # create an ssh key
   ssh-keygen -t ed25519 -C "$(whoami)@$(hostname -s)"
+  # start the ssh agent (the ssh agent manages keys)
   eval "$(ssh-agent -s)"
+  # configure ssh
   cp files/config ~/.ssh/config
+  # add the ssh key to keychain
   ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+  # add the ssh key to GitHub
   gh ssh-key add ~/.ssh/id_ed25519.pub
 }
+
 prompt_and_run \
   "Do you want to configure GitHub?" \
   commands
@@ -228,6 +247,7 @@ commands () {
   echo "Installing Gatsby..."
   npm install -g gatsby-cli
 }
+
 prompt_and_run \
   "Do you want to install Gatsby?" \
   commands
@@ -241,6 +261,7 @@ commands () {
   mkdir ~/.nvm
   cp files/.zshrc ~/.zshrc
 }
+
 prompt_and_run \
   "Do you want to install NVM?" \
   commands
@@ -248,22 +269,25 @@ prompt_and_run \
 # ===============
 # Configure macOS
 # ===============
-echo "===================="
-echo "Configuring macOS..."
-echo "===================="
+commands () {
+  echo "Configuring macOS..."
+  # configure dock
+  defaults write com.apple.dock "autohide" -bool "true"
+  defaults write com.apple.dock "tilesize" -int "64"
+  defaults write com.apple.dock "largesize" -int "128"
+  defaults write com.apple.dock "autohide-delay" -float "0.25"
+  defaults write com.apple.dock "autohide-time-modifier" -float "0.25"
+  defaults write com.apple.dock "mineffect" -string "scale"
+  # restart dock and finder
+  killall Dock Finder
+  # todo: add all the things!
+}
 
-# Dock
-defaults write com.apple.dock "autohide" -bool "true"
-defaults write com.apple.dock "tilesize" -int "64"
-defaults write com.apple.dock "largesize" -int "128"
-defaults write com.apple.dock "autohide-delay" -float "0.25"
-defaults write com.apple.dock "autohide-time-modifier" -float "0.25"
-defaults write com.apple.dock "mineffect" -string "scale"
-
-# Restart Dock and Finder
-killall Dock Finder
+prompt_and_run \
+  "Do you want to configure macOS?" \
+  commands
 
 # =====
 # Done!
 # =====
-echo "Fin"
+echo "*Fin*"

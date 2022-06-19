@@ -287,7 +287,7 @@ prompt_and_run \
   "Do you want to configure macOS?" \
   commands
 
-# =====
-# Done!
-# =====
+# ===
+# Fin
+# ===
 echo "*Fin*"

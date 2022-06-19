@@ -3,9 +3,9 @@
 # to make this executable:
 # chmod +x set-up-mac.sh
 
-# =============================================
-# Prompt the User and Run Commands (a Function)
-# =============================================
+# ===============
+# Prompt Function
+# ===============
 prompt_and_run () {
   while :
   do
@@ -40,7 +40,9 @@ commands () {
   echo "Installing Command Line Tools for Xcode..."
   xcode-select --install
 }
-prompt_and_run "Do you want to install Command Line Tools for Xcode?" commands
+prompt_and_run \
+  "Do you want to install Command Line Tools for Xcode?" \
+  commands
 
 # ================
 # Install Homebrew
@@ -52,7 +54,9 @@ commands () {
   brew tap homebrew/cask-drivers
   brew tap homebrew/cask-fonts
 }
-prompt_and_run "Do you want to install Homebrew?" commands
+prompt_and_run \
+  "Do you want to install Homebrew?" \
+  commands
 
 # =====================
 # Install App Store CLI
@@ -61,11 +65,13 @@ commands () {
   echo "Installing the App Store CLI..."
   brew install mas
 }
-prompt_and_run "Do you want to install the App Store CLI?" commands
+prompt_and_run \
+  "Do you want to install the App Store CLI?" \
+  commands
 
-# ===============================
-# Install Apps from the App Store
-# ===============================
+# ======================
+# Install App Store Apps
+# ======================
 # 640199958   Apple Developer
 # 937984704   Amphetamine
 # 1055511498  Day One
@@ -112,11 +118,13 @@ commands () {
     1147396723 \
     497799835
 }
-prompt_and_run "Do you want to install App Store apps?" commands
+prompt_and_run \
+  "Do you want to install App Store apps?" \
+  commands
 
-# ===============================
-# Install Apps from Homebrew Cask # todo: deal with case where apps already installed by other means (i.e. not with brew)
-# ===============================
+# ==========================
+# Install Homebrew Cask Apps
+# ==========================
 commands () {
   echo "Installing Homebrew Cask apps..."
   brew install --cask \
@@ -136,7 +144,9 @@ commands () {
     visual-studio-code \
     zoom
 }
-prompt_and_run "Do you want to install Homebrew Cask apps?" commands
+prompt_and_run \
+  "Do you want to install Homebrew Cask apps?" \
+  commands
 
 # ===================
 # Download Other Apps
@@ -147,61 +157,9 @@ commands () {
   wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
   open ~/Downloads/LogiTuneInstaller.dmg
 }
-prompt_and_run "Do you want to download other apps?" commands
-
-# =============
-# Configure git
-# =============
-commands () {
-  echo "Configuring git..."
-  git config --global init.defaultBranch main
-  git config --global user.name "Christian Areas"
-  git config --global user.email me@areas.me
-  git config -l
-}
-prompt_and_run "Do you want to configure git?" commands
-
-# ==================
-# Install GitHub CLI
-# ==================
-commands () {
-  echo "Installing GitHub CLI..."
-  brew install gh
-}
-prompt_and_run "Do you want to install GitHub CLI" commands
-
-# ================
-# Configure GitHub
-# ================
-commands () {
-  echo "Configuring GitHub..."
-  ssh-keygen -t ed25519 -C "$(whoami)@$(hostname -s)"
-  eval "$(ssh-agent -s)"
-  cp files/config ~/.ssh/config
-  ssh-add --apple-use-keychain ~/.ssh/id_ed25519
-  gh ssh-key add ~/.ssh/id_ed25519.pub
-}
-prompt_and_run "Do you want to configure GitHub?" commands
-
-# ===========
-# Install NVM
-# ===========
-commands () {
-  echo "Installing NVM..."
-  brew install nvm
-  mkdir ~/.nvm
-  cp files/.zshrc ~/.zshrc
-}
-prompt_and_run "Do you want to install NVM?" commands
-
-# ==============
-# Install Gatsby
-# ==============
-commands () {
-  echo "Installing Gatsby..."
-  npm install -g gatsby-cli
-}
-prompt_and_run "Do you want to install Gatsby?" commands
+prompt_and_run \
+  "Do you want to download other apps?" \
+  commands
 
 # =============
 # Install Fonts
@@ -219,7 +177,73 @@ commands () {
     font-ia-writer-mono \
     font-ia-writer-quattro
 }
-prompt_and_run "Do you want to install fonts?" commands
+prompt_and_run \
+  "Do you want to install fonts?" \
+  commands
+
+# =============
+# Configure git
+# =============
+commands () {
+  echo "Configuring git..."
+  git config --global init.defaultBranch main
+  git config --global user.name "Christian Areas"
+  git config --global user.email me@areas.me
+  git config -l
+}
+prompt_and_run \
+  "Do you want to configure git?" \
+  commands
+
+# ==================
+# Install GitHub CLI
+# ==================
+commands () {
+  echo "Installing GitHub CLI..."
+  brew install gh
+}
+prompt_and_run \
+  "Do you want to install GitHub CLI" \
+  commands
+
+# ================
+# Configure GitHub
+# ================
+commands () {
+  echo "Configuring GitHub..."
+  ssh-keygen -t ed25519 -C "$(whoami)@$(hostname -s)"
+  eval "$(ssh-agent -s)"
+  cp files/config ~/.ssh/config
+  ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+  gh ssh-key add ~/.ssh/id_ed25519.pub
+}
+prompt_and_run \
+  "Do you want to configure GitHub?" \
+  commands
+
+# ==============
+# Install Gatsby
+# ==============
+commands () {
+  echo "Installing Gatsby..."
+  npm install -g gatsby-cli
+}
+prompt_and_run \
+  "Do you want to install Gatsby?" \
+  commands
+
+# ===========
+# Install NVM
+# ===========
+commands () {
+  echo "Installing NVM..."
+  brew install nvm
+  mkdir ~/.nvm
+  cp files/.zshrc ~/.zshrc
+}
+prompt_and_run \
+  "Do you want to install NVM?" \
+  commands
 
 # ===============
 # Configure macOS

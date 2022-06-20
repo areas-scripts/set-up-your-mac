@@ -273,13 +273,22 @@ commands () {
   echo "Configuring macOS..."
   # configure dock
   defaults write com.apple.dock "autohide" -bool "true"
-  defaults write com.apple.dock "tilesize" -int "64"
-  defaults write com.apple.dock "largesize" -int "128"
   defaults write com.apple.dock "autohide-delay" -float "0.25"
   defaults write com.apple.dock "autohide-time-modifier" -float "0.25"
+  defaults write com.apple.dock "largesize" -int "128"
   defaults write com.apple.dock "mineffect" -string "scale"
+  defaults write com.apple.dock "tilesize" -int "64"
+  # configure finder
+  defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
+  defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
+  defaults write com.apple.finder "ShowStatusBar" -bool true
+  # configure menu bar
+  defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool "true"
+  defaults write com.apple.menuextra.clock "DateFormat" -string "\"h:mm:ss a\""
+  # configure mission control
+  defaults write com.apple.dock "mru-spaces" -bool "false"
   # restart dock and finder
-  killall Dock Finder
+  killall Dock Finder SystemUIServer
   # todo: add all the things!
 }
 

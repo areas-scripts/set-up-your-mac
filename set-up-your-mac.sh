@@ -145,6 +145,7 @@ commands () {
     microsoft-teams \
     qmk-toolbox \
     safari-technology-preview \
+    scrivener \
     stoplight-studio \
     via \
     visual-studio-code \

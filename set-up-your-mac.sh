@@ -266,6 +266,18 @@ prompt_and_run \
   "Do you want to install NVM?" \
   commands
 
+# ============
+# Install Yarn
+# ============
+commands () {
+  echo "Installing Yarn..."
+  corepack enable
+}
+
+prompt_and_run \
+  "Do you want to install Yarn?" \
+  commands
+  
 # ===============
 # Configure macOS
 # ===============

@@ -253,6 +253,18 @@ prompt_and_run \
   "Do you want to install Gatsby?" \
   commands
 
+# ============
+# Install Yarn
+# ============
+commands () {
+  echo "Installing Yarn..."
+  npm install -g yarn 
+}
+
+prompt_and_run \
+  "Do you want to install Yarn?" \
+  commands
+
 # ===========
 # Install NVM
 # ===========
@@ -264,18 +276,6 @@ commands () {
 
 prompt_and_run \
   "Do you want to install NVM?" \
-  commands
-
-# ============
-# Install Yarn
-# ============
-commands () {
-  echo "Installing Yarn..."
-  corepack enable
-}
-
-prompt_and_run \
-  "Do you want to install Yarn?" \
   commands
   
 # ===============

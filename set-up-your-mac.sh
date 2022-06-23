@@ -217,7 +217,7 @@ commands () {
 }
 
 prompt_and_run \
-  "Do you want to install GitHub CLI" \
+  "Do you want to install GitHub CLI?" \
   commands
 
 # ================
@@ -260,6 +260,7 @@ commands () {
   echo "Installing NVM..."
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
   cp files/.zshrc ~/.zshrc
+  nvm ls
 }
 
 prompt_and_run \

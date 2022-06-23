@@ -241,18 +241,6 @@ prompt_and_run \
   "Do you want to configure GitHub?" \
   commands
 
-# ==============
-# Install Gatsby
-# ==============
-commands () {
-  echo "Installing Gatsby..."
-  npm install -g gatsby-cli
-}
-
-prompt_and_run \
-  "Do you want to install Gatsby?" \
-  commands
-
 # ============
 # Install Yarn
 # ============
@@ -278,6 +266,18 @@ prompt_and_run \
   "Do you want to install NVM?" \
   commands
   
+# ==============
+# Install Gatsby
+# ==============
+commands () {
+  echo "Installing Gatsby..."
+  npm install -g gatsby-cli
+}
+
+prompt_and_run \
+  "Do you want to install Gatsby?" \
+  commands
+
 # ===============
 # Configure macOS
 # ===============

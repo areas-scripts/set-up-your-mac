@@ -305,6 +305,22 @@ commands () {
   # todo: add all the things!
 }
 
+# ========
+# Menu Bar
+# ========
+# Amphetamine
+# Day One
+# Elgato Control Center
+# Paste
+# Speedtest
+# Wi-Fi
+# Sound
+# Bluetooth
+# Itsycal
+# Focus
+# Control Center
+# Clock
+
 prompt_and_run \
   "Do you want to configure macOS?" \
   commands

@@ -288,7 +288,7 @@ commands () {
   defaults write com.apple.dock "autohide" -bool "true"
   defaults write com.apple.dock "autohide-delay" -float "0.25"
   defaults write com.apple.dock "autohide-time-modifier" -float "0.25"
-  defaults write com.apple.dock "largesize" -int "128"
+  defaults write com.apple.dock "largesize" -int "192"
   defaults write com.apple.dock "mineffect" -string "scale"
   defaults write com.apple.dock "tilesize" -int "64"
   # configure finder
@@ -304,6 +304,22 @@ commands () {
   killall Dock Finder SystemUIServer
   # todo: add all the things!
 }
+
+# ========
+# Menu Bar
+# ========
+# Amphetamine (Coffee Carafe)
+# Day One
+# Elgato Control Center
+# Paste
+# Speedtest
+# Wi-Fi
+# Sound
+# Bluetooth
+# Itsycal
+# Focus
+# Control Center
+# Clock
 
 prompt_and_run \
   "Do you want to configure macOS?" \

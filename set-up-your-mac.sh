@@ -254,6 +254,18 @@ prompt_and_run \
   commands
 
 # ===========
+# Install Pandoc
+# ===========
+commands () {
+  echo "Installing pandoc..."
+  brew install pandoc
+}
+
+prompt_and_run \
+  "Do you want to install pandoc?" \
+  commands
+
+# ===========
 # Install NVM
 # ===========
 commands () {

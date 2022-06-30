@@ -310,11 +310,13 @@ commands () {
 # Amphetamine (Coffee Carafe)
 # Day One
 # Elgato Control Center
+# Logi Tune
 # Paste
 # Speedtest
 # Wi-Fi
 # Sound
 # Bluetooth
+# Battery (if applicable)
 # Itsycal
 # Focus
 # Control Center

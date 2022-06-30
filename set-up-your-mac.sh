@@ -246,7 +246,7 @@ prompt_and_run \
 # ============
 commands () {
   echo "Installing Yarn..."
-  npm install -g yarn 
+  npm install -g yarn
 }
 
 prompt_and_run \

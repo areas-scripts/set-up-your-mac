@@ -299,7 +299,7 @@ commands () {
   defaults write com.apple.dock "autohide" -bool "true"
   defaults write com.apple.dock "autohide-delay" -float "0.25"
   defaults write com.apple.dock "autohide-time-modifier" -float "0.25"
-  defaults write com.apple.dock "largesize" -int "192"
+  defaults write com.apple.dock "largesize" -int "175"
   defaults write com.apple.dock "mineffect" -string "scale"
   defaults write com.apple.dock "tilesize" -int "64"
   # configure finder
